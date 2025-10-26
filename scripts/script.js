@@ -1,33 +1,13 @@
 // Wait for the entire document (HTML) to load before running the script
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. Mobile Menu Toggle Functionality (DOM Manipulation & Event Handling)
-    const menuToggle = document.querySelector('.menu-toggle');
-    const mainNav = document.querySelector('.main-nav');
-
-    /**
-     * Toggles the 'active' class on the navigation menu to show/hide it on mobile.
-     */
-    function toggleMenu() {
-        // Toggles the CSS class 'active' to show/hide the menu
-        mainNav.classList.toggle('active'); 
-        const isExpanded = mainNav.classList.contains('active');
-        // Update ARIA attribute for accessibility
-        menuToggle.setAttribute('aria-expanded', isExpanded);
-    }
-
-    // Attach a click event listener to the menu button
-    if (menuToggle) {
-        menuToggle.addEventListener('click', toggleMenu);
-    }
-
-
-    // 2. Dynamic Skill Highlighter (Event Handling)
+    // 1. Dynamic Skill Highlighter (Event Handling)
+    // Select all <li> items inside the skills-list
     const skillItems = document.querySelectorAll('.skills-list li');
 
     /**
      * Toggles the 'highlight' class on a skill item when clicked.
-     * The visual change is handled by the CSS.
+     * The visual change is handled by the custom CSS in style.css.
      */
     function highlightSkill(event) {
         const item = event.target;
@@ -41,7 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // 3. Simple Contact Form Validation (Functions & Event Handling)
+    // 2. Simple Contact Form Validation (Functions & Event Handling)
+    // Select the form element
     const contactForm = document.querySelector('.contact-form');
 
     /**
@@ -49,8 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
      * Prevents form submission if validation fails and logs status to console.
      */
     function validateForm(event) {
-        event.preventDefault(); // Stops the default form submission (refreshing the page)
+        // Prevents the default HTML form submission (page refresh)
+        event.preventDefault(); 
 
+        // Use querySelector for elements now styled with Bootstrap
         const nameInput = document.getElementById('name');
         const emailInput = document.getElementById('email');
         const messageInput = document.getElementById('message');
@@ -58,12 +41,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const nameValue = nameInput ? nameInput.value.trim() : '';
         const emailValue = emailInput ? emailInput.value.trim() : '';
         
-        // Reset borders visually
-        nameInput.style.border = '1px solid #ccc';
-        emailInput.style.border = '1px solid #ccc';
-
+        // Reset borders visually (important when using custom JS validation)
+        nameInput.style.border = '1px solid #ced4da'; // Bootstrap's default border color
+        emailInput.style.border = '1px solid #ced4da';
 
         if (nameValue === '' || emailValue === '') {
+            // Log failure to the browser console
             console.error("Validation Failed: Please fill out the Name and Email fields.");
             
             // Highlight fields with a red border if they are empty
@@ -71,15 +54,15 @@ document.addEventListener('DOMContentLoaded', () => {
             if (emailValue === '') emailInput.style.border = '2px solid red';
 
         } else {
+            // Log success to the browser console
             console.log("Form Validation Success! (Data logged to console)");
             console.log("Name:", nameValue);
             console.log("Email:", emailValue);
             console.log("Message:", messageInput ? messageInput.value.trim() : '');
 
-            // For this example, we clear the form to simulate success
+            // Simulate form submission success by clearing the form
             contactForm.reset(); 
-            nameInput.style.border = '1px solid #ccc';
-            emailInput.style.border = '1px solid #ccc';
+            // Optional: Show a success message to the user (not required for this milestone)
         }
     }
 

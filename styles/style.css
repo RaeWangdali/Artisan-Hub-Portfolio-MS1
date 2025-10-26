@@ -12,18 +12,16 @@ html {
 }
 
 body {
+    /* Keeping your chosen font and background */
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     line-height: 1.6;
     color: #333;
     background-color: #f4f4f4;
 }
 
-.container {
-    max-width: 1100px;
-    margin: auto;
-    overflow: hidden;
-    padding: 0 2rem;
-}
+/* * DELETED: The custom .container, header, and all navigation layout CSS 
+* Bootstrap handles these now.
+*/
 
 h1, h2, h3 {
     color: #2c3e50;
@@ -41,131 +39,50 @@ a {
     color: #3498db;
 }
 
+/* Custom button style kept to ensure existing color scheme */
 .btn {
-    display: inline-block;
-    background: #3498db;
-    color: #fff;
-    padding: 0.75rem 1.5rem;
-    border-radius: 5px;
     transition: background 0.3s ease-in-out;
 }
 
-.btn:hover {
-    background: #2980b9;
+.btn-primary { 
+    /* Overrides Bootstrap default color with your brand color */
+    background: #3498db !important;
+    border-color: #3498db !important;
 }
 
-/* --- Header & Navigation --- */
-
-header {
-    background: #fff;
-    color: #fff;
-    padding: 1rem 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+.btn-primary:hover {
+    background: #2980b9 !important;
+    border-color: #2980b9 !important;
 }
 
-header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #2c3e50;
-}
-
-.main-nav ul {
-    list-style: none;
-    display: flex;
-}
-
-.main-nav ul li {
-    margin-left: 2rem;
-}
-
-.main-nav ul li a {
-    color: #555;
-    font-weight: bold;
-    transition: color 0.3s ease-in-out;
-}
-
-.main-nav ul li a:hover {
-    color: #3498db;
-}
-
-/* --- Sections --- */
+/* --- Custom Section Spacing (Bootstrap utility classes could also handle this) --- */
 
 section {
     padding: 4rem 0;
 }
 
-.about-me {
-    background: #fdfdfd;
-}
-
-.about-me .content-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 3rem;
-    align-items: center;
-}
-
-.about-me .about-image {
-    text-align: center;
-}
-
+/* Custom styling for specific elements */
 .about-me .profile-img {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    object-fit: cover;
+    /* Keep border and shadow for aesthetic effect */
     border: 5px solid #fff;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-.projects {
-    background: #ecf0f1;
-}
-
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
-
-.project-card {
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    padding: 1.5rem;
+/* Project Card Custom Hover Effect (Applied to Bootstrap .card) */
+.card {
     transition: transform 0.3s ease-in-out;
+    border: none;
+    border-radius: 10px;
+}
+.card:hover {
+    transform: translateY(-5px); /* Slightly reduced hover lift for Bootstrap */
 }
 
-.project-card:hover {
-    transform: translateY(-10px);
-}
-
-.project-card .project-img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 1rem;
-}
-
-.skills {
-    background: #fdfdfd;
-}
-
+/* Skills list custom styling */
 .skills-list {
+    /* Keep your custom tag styling */
     list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     gap: 1rem;
 }
 
@@ -178,147 +95,26 @@ section {
     font-size: 1.1rem;
 }
 
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    max-width: 600px;
-    margin: auto;
-}
-
-.contact-form label {
-    margin-bottom: 0.5rem;
-    font-weight: bold;
-}
-
-.contact-form input,
-.contact-form textarea {
-    padding: 0.75rem;
-    margin-bottom: 1.5rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
-}
-
-/* --- Footer --- */
-
+/* Footer Colors */
 footer {
-    background: #2c3e50;
+    background: #2c3e50 !important;
+}
+
+/* --- JAVASCRIPT & INTERACTIVITY STYLES (REQUIRED TO KEEP) --- */
+
+/* Class added by JS to highlight a clicked skill */
+.skills-list li.highlight {
+    background: #e67e22 !important; /* A warm orange color */
     color: #fff;
-    text-align: center;
-    padding: 2rem 0;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease-in-out;
 }
-
-footer .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.social-links {
-    margin-top: 1rem;
-}
-
-.social-links a {
-    color: #fff;
-    margin: 0 0.5rem;
-    transition: color 0.3s ease-in-out;
-}
-
-.social-links a:hover {
-    color: #3498db;
-}
-
-/* --- Responsive Design (Media Queries) --- */
-
-/* For screens smaller than 768px (e.g., tablets and mobile phones) */
-
-@media (max-width: 768px) {
-    h2 {
-        font-size: 2rem;
-    }
-
-    /* ORIGINAL MS1 RESPONSIVE RULES */
-    .main-nav ul {
-        flex-direction: column;
-        margin-top: 1rem;
-    }
-
-    .main-nav ul li {
-        margin: 0.5rem 0;
-    }
-
-    .about-me .content-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .about-me .about-image {
-        order: -1; /* Puts the image at the top on mobile */
-    }
-
-    .project-grid {
-        grid-template-columns: 1fr; /* Stacks project cards vertically */
-    }
-    
-    /* NEW CSS FOR JAVASCRIPT MOBILE MENU */
-    
-    /* Ensure the header container still uses flex to keep the logo and button aligned */
-    header .container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    /* Show the hamburger icon */
-    .menu-toggle {
-        display: block; 
-    }
-
-    /* Initial state: Hide the menu on mobile */
-    .main-nav {
-        max-height: 0;
-        overflow: hidden; /* Clips content outside the max-height */
-        transition: max-height 0.3s ease-in-out; /* Smooth transition for slide effect */
-        width: 100%;
-        /* Positions the menu container to drop below the logo */
-        position: absolute;
-        top: 65px; 
-        background: #fff;
-        box-shadow: 0 4px 5px rgba(0,0,0,0.05);
-    }
-
-    /* Active state: Class added by JS to show the menu */
-    .main-nav.active {
-        max-height: 300px; /* Expands to show all links */
-    }
-
-    .main-nav ul {
-        padding: 1rem 0;
-        align-items: center; 
-    }
-}
-
-/* --- CSS for JavaScript Interactivity (All Screen Sizes) --- */
 
 /* Rule to indicate skill items are clickable */
 .skills-list li {
     cursor: pointer;
-    transition: all 0.2s ease-in-out; /* Smooths the hover/click effects */
+    transition: all 0.2s ease-in-out; 
 }
 
-/* Class added by JS to highlight a clicked skill */
-.skills-list li.highlight {
-    background: #e67e22; /* A warm orange color */
-    color: #fff;
-    transform: scale(1.05); /* Slightly enlarges the item */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.menu-toggle {
-    display: none; /* Hides the button on desktop by default */
-    background: none;
-    border: none;
-    font-size: 2rem;
-    cursor: pointer;
-    color: #2c3e50;
-    margin-left: auto; /* Pushes the button to the right */
-}
+/* DELETED: All previous custom mobile menu CSS. Bootstrap handles the toggle now. */
