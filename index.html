@@ -13,7 +13,12 @@
     <header>
         <div class="container">
             <h1 class="logo">Artisan Hub</h1>
-            <nav class="main-nav">
+
+            <!-- ADDED: Mobile Menu Toggle Button (Visible on mobile screens) -->
+            <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav">☰</button>
+            
+            <!-- ADDED: id="main-nav" for JavaScript targeting -->
+            <nav class="main-nav" id="main-nav"> 
                 <ul>
                     <li><a href="#about">About</a></li>
                     <li><a href="#projects">Projects</a></li>
@@ -36,6 +41,7 @@
                     <a href="documents/resume.pdf" class="btn" download>Download Resume</a>
                 </div>
                 <div class="about-image">
+                    <!-- Placeholder image path; ensure image is in 'images' folder -->
                     <img src="images/profile.jpg" alt="A professional photo of the artisan" class="profile-img">
                 </div>
             </div>
@@ -72,6 +78,7 @@
         <section id="skills" class="skills">
             <div class="container">
                 <h2>My Skills</h2>
+                <!-- These list items are targeted by JavaScript for the click highlight feature -->
                 <ul class="skills-list">
                     <li>Woodworking</li>
                     <li>Leathercraft</li>
@@ -87,6 +94,7 @@
         <section id="contact" class="contact">
             <div class="container">
                 <h2>Contact Me</h2>
+                <!-- The class="contact-form" is targeted by JavaScript for validation -->
                 <form action="#" method="post" class="contact-form">
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name" required>
@@ -115,5 +123,7 @@
         </div>
     </footer>
 
+    <!-- ADDED: Link to the JavaScript file (MUST be right before the closing </body> tag) -->
+    <script src="scripts/script.js"></script> 
 </body>
 </html>
